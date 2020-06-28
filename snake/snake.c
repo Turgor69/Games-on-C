@@ -126,8 +126,15 @@ int main() {
 				d++;
 				ro--;
 			}
+			if ((fod.cord.x == snake[0].x) && (fod.cord.y == snake[0].y)) {
+				ro += fod.value;
+				fod = foodcreate(fod, rand()%4 + 1, snake, d);
+			}
+			snake[0].x = nextposition.x;
+			snake[0].y = nextposition.y;
+			drawsnake(snake, d, '@');
 		}
-		
+		usleep(100000);
 	}
 	endwin();
 	return 0;
