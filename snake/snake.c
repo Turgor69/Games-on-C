@@ -9,6 +9,9 @@ struct position {
 	char symbol;
 };
 
+const int max_X = 30; 
+const int max_Y = 30;
+
 struct food {
 	struct position cord;
 	int value;
@@ -57,6 +60,16 @@ struct food foodcreate(struct food fod, int val, struct position *snake, int d) 
 	printposition(fod.cord.y, fod.cord.x, valc + 48);
 	refresh();
 	return fod;
+}
+
+int direction(int ch, int dir) {
+	switch (ch) {
+		case 'w': if(dir != 2) return 3; break;
+		case 's': if(dir != 3) return 2; break;
+		case 'a': if(dir != 0) return 1; break;
+		case 'd': if(dir != 1) return 0; break;
+	}
+	return dir;
 }
 
 int main() {
