@@ -108,6 +108,26 @@ int main() {
 		if (nextposition.y < 1)
 			nextposition.y += max_Y;
 		
+		gameover = check(nextposition, snake, d);
+		
+		if (!gameover) {
+			struct position lastposition;
+			lastposition.x = snake[d - 1].x;
+			lastposition.y = snake[d - 1].y;
+			drawsnake(snake, d, ' ');
+			for (int r = d - 1; r > 0; r--) {
+				snake[r].x = snake[r-1].x;
+				snake[r].y = snake[r-1].y;
+			}
+			if (ro > 0) {
+				snake[d].x = lastposition.x;
+				snake[d].y = lastposition.y;
+				snake[d].symbol = '@';
+				d++;
+				ro--;
+			}
+		}
+		
 	}
 	endwin();
 	return 0;
