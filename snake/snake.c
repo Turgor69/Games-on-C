@@ -39,6 +39,26 @@ void drawsnake(struct position *snake, int d, char f) {
 	refresh();
 }
 
+bool check(struct position cord, struct position *snake, int d) {
+	for (int i = 0; i < d; i++) {
+		if ((cord.x == snake[i].x) && (cord.y == snake[i].y))
+		return true;
+	}
+	return false;
+}
+
+struct food foodcreate(struct food fod, int val, struct position *snake, int d) { 
+	do {
+		fod.cord.x = rand() % max_X + 1; 
+		fod.cord.y = rand() % max_Y + 1;
+	} while (check(fod.cord, snake, d)); 
+	fod.value = val;
+	char valc = val;
+	printposition(fod.cord.y, fod.cord.x, valc + 48);
+	refresh();
+	return fod;
+}
+
 int main() {
 	initscr(); 	   
 	noecho(); 
@@ -65,6 +85,12 @@ int main() {
 
 	drawsnake(snake, d, '@');
 	refresh();
+	
+	int dir1 = 1;
+	struct position nextposition;
+	int ch;
+	
+	fod = foodcreate(fod, rand() % 4 + 1, snake, d);
 	
 	endwin();
 	return 0;
