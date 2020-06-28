@@ -92,6 +92,23 @@ int main() {
 	
 	fod = foodcreate(fod, rand() % 4 + 1, snake, d);
 	
+	bool gameover = false;
+	
+	while(!gameover) {
+		ch = getch();
+		dir1 = direction(ch,dir1); 
+		nextposition.x = snake[0].x + nextdir[0][dir1]; 
+		nextposition.y = snake[0].y + nextdir[1][dir1];
+		if (nextposition.x > max_X)
+			nextposition.x -= max_X;
+		if (nextposition.x < 1)
+			nextposition.x += max_X;
+		if (nextposition.y > max_Y)
+			nextposition.y -= max_Y;
+		if (nextposition.y < 1)
+			nextposition.y += max_Y;
+		
+	}
 	endwin();
 	return 0;
 }
