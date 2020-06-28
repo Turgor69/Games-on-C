@@ -32,6 +32,13 @@ void field(int max_Y, int max_X) {
 	attron(COLOR_PAIR(1));
 }
 
+void drawsnake(struct position *snake, int d, char f) { 
+	for (int i = 0; i < d; i++) {
+		printposition(snake[i].y, snake[i].x, f);
+	}
+	refresh();
+}
+
 int main() {
 	initscr(); 	   
 	noecho(); 
@@ -56,6 +63,8 @@ int main() {
 		snake[i].symbol = '@';
 	}
 
+	drawsnake(snake, d, '@');
+	refresh();
 	
 	endwin();
 	return 0;
