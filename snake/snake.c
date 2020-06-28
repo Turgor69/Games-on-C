@@ -44,6 +44,19 @@ int main() {
 	
 	field(max_Y, max_X); 
 	
+	struct position snake[max_X * max_Y];
+	struct food fod;
+	int nextdir[2][4] = {{1,-1,0,0},{0,0,1,-1}};
+	int d = 4;
+	int ro = 0;
+	
+	for (int i = 0; i < d; i++) {
+		snake[i].x = 5 + i;
+		snake[i].y = 15;
+		snake[i].symbol = '@';
+	}
+
+	
 	endwin();
 	return 0;
 }
