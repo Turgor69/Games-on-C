@@ -10,6 +10,14 @@ struct position {
 };
 
 struct food {
-	struct position line;
+	struct position cord;
 	int value;
 };
+
+int main() {
+	initscr(); 	   
+	noecho(); 
+	start_color();
+	endwin();
+	return 0;
+}
